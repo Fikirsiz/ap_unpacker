@@ -12,6 +12,6 @@ with ZipFile(sys.argv[1]) as f:
         vendor_model += [(ap["vendor"], ap["model"])]
 
 with open("access_points.csv", "w") as csv_f:
-    csv_result = csv.writer(csv_f, dialect="excel")
+    csv_result = csv.writer(csv_f, dialect="excel", quoting=csv.QUOTE_ALL)
     for ap, count in Counter(vendor_model).items():
         csv_result.writerow([ap[0], ap[1], count])
